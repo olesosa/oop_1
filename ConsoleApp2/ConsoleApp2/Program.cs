@@ -1,39 +1,39 @@
 ﻿public class Counter
 {
-    private int _number;
-    private int _min;
-    private int _max;
+    private int number;
+    private int min;
+    private int max;
 
     public Counter(int min = 1, int max = 10, int number = 5)
     {
-        _min = min;
-        _max = max;
-        _number = number;
+        min = min;
+        max = max;
+        number = number;
     }
 
     public int CurrentNumber
     {
-        get { return _number; }
+        get { return number; }
     }
 
-    public void Print(int _number)
+    public void Print(int number)
     {
-        Console.WriteLine(_number);
+        Console.WriteLine(number);
     }
 
     public void Increment()
     {
-        if (_number < _max)
+        if (number < max)
         {
-            _number++;
+            number++;
         }
     }
 
     public void Decrement()
     {
-        if (_number > _min)
+        if (number > min)
         {
-            _number--;
+            number--;
         }
     }
 
