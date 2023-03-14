@@ -1,8 +1,8 @@
-﻿public class Counter
+public class Counter
 {
-    private int number;
-    private int min;
-    private int max;
+    public int number;
+    public int min;
+    public int max;
 
     public Counter(int min = 1, int max = 10, int number = 5)
     {
@@ -15,39 +15,17 @@
 
     public void Increment()
     {
-        try
+        if (number < max)
         {
-            if (number < max)
-            {
-                number++;
-            }
-            else
-            {
-                throw new Exception();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("error");
+            number++;
         }
     }
 
     public void Decrement()
     {
-        try
+        if (number > min)
         {
-            if (number > min)
-            {
-                number--;
-            }
-            else
-            {
-                throw new Exception();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("error");
+            number--;
         }
     }
 }
@@ -67,8 +45,20 @@ public class Program
         Counter b = new Counter(10, 20, 10);
         Console.WriteLine(b.CurrentNumber);
 
-        b.Decrement();
-        Console.WriteLine(b.CurrentNumber);
+        try
+        {
+            b.Decrement();
+            Console.WriteLine(b.CurrentNumber);
+
+            if (b.number <= b.min)
+            {
+                throw new Exception("Minimum value");
+            }
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
 
     }
 }
