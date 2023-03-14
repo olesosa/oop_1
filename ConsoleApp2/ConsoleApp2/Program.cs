@@ -6,54 +6,69 @@
 
     public Counter(int min = 1, int max = 10, int number = 5)
     {
-        min = min;
-        max = max;
-        number = number;
+        this.min = min;
+        this.max = max;
+        this.number = number;
     }
 
-    public int CurrentNumber
-    {
-        get { return number; }
-    }
-
-    public void Print(int number)
-    {
-        Console.WriteLine(number);
-    }
+    public int CurrentNumber => number;
 
     public void Increment()
     {
-        if (number < max)
+        try
         {
-            number++;
+            if (number < max)
+            {
+                number++;
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("error");
         }
     }
 
     public void Decrement()
     {
-        if (number > min)
+        try
         {
-            number--;
+            if (number > min)
+            {
+                number--;
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("error");
         }
     }
-
 }
+
 public class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("\tІнкремента");
+        Console.WriteLine("\tIнкремент");
         Counter a = new Counter();
-        a.Print(a.CurrentNumber);
+        Console.WriteLine(a.CurrentNumber);
 
         a.Increment();
-        a.Print(a.CurrentNumber);
+        Console.WriteLine(a.CurrentNumber);
 
-        Console.WriteLine("\tДекремента");
-        Counter b = new Counter(10, 20, 15);
-        b.Print(b.CurrentNumber);
+        Console.WriteLine("\tДекремент");
+        Counter b = new Counter(10, 20, 10);
+        Console.WriteLine(b.CurrentNumber);
 
         b.Decrement();
-        b.Print(b.CurrentNumber);
+        Console.WriteLine(b.CurrentNumber);
+
     }
 }
